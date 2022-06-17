@@ -4,3 +4,8 @@
 
 # Properties file
 *.properties
+
+### IntelliJ Specific ###
+
+*.idea
+*.iml
