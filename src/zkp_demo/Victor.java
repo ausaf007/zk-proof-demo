@@ -53,9 +53,8 @@ public class Victor {
                 System.out.println("LHS="+LHS);
 
                 // RHS = g^s mod p
-                // This part is computationally intensive
                 System.out.print("Calculating RHS...");
-                BigInteger RHS = g.pow(S).mod(P);
+                BigInteger RHS = g.modPow(BigInteger.valueOf(S),P);
                 System.out.println("\nRHS="+RHS);
 
                 if(LHS.equals(RHS) && (c == compactHash(R+Signature)) ){
