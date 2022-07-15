@@ -1,25 +1,20 @@
 package zkp_demo;
 
 import java.math.BigInteger;
-
-
-
-import static zkp_demo.CryptoCommons.compactHash;
-import static zkp_demo.CryptoCommons.random4;
+import java.util.Random;
 
 import static zkp_demo.Constants.P;
 import static zkp_demo.Constants.g;
+import static zkp_demo.CryptoCommons.hash;
 
 public class Test {
 
-    //Generates big prime number
-
-
     public static void main(String[] args) {
 
-        //Proper unit testing to be added
+        // Proper unit testing to be added in future
+        // This Class Tests out the mathematical logic of Schnorr Signatures
 
-        //Private Key
+        // Private Key
         int x = 4654;
 
         // Generating Public Key
@@ -28,47 +23,42 @@ public class Test {
 
         System.out.println(Y);
 
-        // generate 4-digit random number
-        int k = random4();
+        // generate 16 bit random number
+        int k = Integer.parseInt((new BigInteger(16, new Random())).toString());
 
-        System.out.println("k="+k);
+        System.out.println("k=" + k);
 
         // R = g^k mod P
         BigInteger R = g.pow(k).mod(P);
-        System.out.println("R="+R);
+        System.out.println("R=" + R);
 
-        //Hashing R
-        String Signature="Peggy";
-        int c = compactHash(R+Signature);
-        System.out.println("c="+c);
+        // Hashing R
+        String Signature = "Peggy";
+        BigInteger c = hash(R + Signature);
+        c = c.remainder(BigInteger.valueOf((long) Math.pow(10, 4))); // get last 5 digits of c
+        System.out.println("c=" + c);
 
-
-        //S = k + cx;
-        int S = k + (c*x);
-        System.out.println("S="+S);
-
-
+        // S = k + cx;
+        int S = k + (c.intValue() * x);
+        System.out.println("S=" + S);
 
         // S, R, Y, C given to prover, verification phase begins
 
-        System.out.println("S="+S);
-        System.out.println("R="+R);
-        System.out.println("Y="+Y);
-        System.out.println("c="+c);
+        System.out.println("S=" + S);
+        System.out.println("R=" + R);
+        System.out.println("Y=" + Y);
+        System.out.println("c=" + c);
 
         // LHS = (Y^c) * R
-        BigInteger LHS = Y.pow(c).multiply(R).mod(P);
-        System.out.println("LHS"+LHS);
+        BigInteger LHS = Y.pow(c.intValue()).multiply(R).mod(P);
+        System.out.println("LHS" + LHS);
 
         // RHS = g^s mod p
         BigInteger RHS = g.pow(S).mod(P);
-        System.out.println("RHS"+RHS);
+        System.out.println("RHS" + RHS);
 
-        if(LHS.equals(RHS) ){
+        if (LHS.equals(RHS)) {
             System.out.println("Test Successful");
         }
-
     }
-
-
 }
