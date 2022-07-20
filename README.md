@@ -27,7 +27,7 @@
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#tech-stack">Tech Stack</a></li>
     <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#how to use">How to use?</a></li>
+    <li><a href="#how-to-use">How to use?</a></li>
     <li><a href="#license">License</a></li>
   </ul>
 </details>
