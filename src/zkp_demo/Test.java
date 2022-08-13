@@ -8,24 +8,18 @@ import static zkp_demo.Constants.g;
 import static zkp_demo.CryptoCommons.hash;
 
 public class Test {
-
     public static void main(String[] args) {
-
         // Proper unit testing to be added in future
         // This Class Tests out the mathematical logic of Schnorr Signatures
-
-        // Private Key
-        int x = 4654;
+        int x = 4654; // Private Key
 
         // Generating Public Key
         // Y = g^x mod P
         BigInteger Y = g.pow(x).mod(P);
-
         System.out.println(Y);
 
         // generate 16 bit random number
         int k = Integer.parseInt((new BigInteger(16, new Random())).toString());
-
         System.out.println("k=" + k);
 
         // R = g^k mod P
@@ -43,7 +37,6 @@ public class Test {
         System.out.println("S=" + S);
 
         // S, R, Y, C given to prover, verification phase begins
-
         System.out.println("S=" + S);
         System.out.println("R=" + R);
         System.out.println("Y=" + Y);

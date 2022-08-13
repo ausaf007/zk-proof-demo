@@ -12,10 +12,9 @@ import static zkp_demo.Constants.*;
 import static zkp_demo.CryptoCommons.hash;
 
 public class Peggy {
-
+    // Variable Initialization
     public static BigInteger Y = ZERO; // This is a public key
     private static BigInteger x = ZERO; // This is the private key
-
     public static String Signature = null;
 
     public static void main(String[] args) {
@@ -94,5 +93,4 @@ public class Peggy {
             ex.printStackTrace();
         }
     }
-
 }

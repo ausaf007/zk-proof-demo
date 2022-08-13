@@ -6,7 +6,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class CryptoCommons {
-
     // Returns SHA-256 Hash of string str as a decimal
     public static BigInteger hash(String str) {
         MessageDigest md = null;
@@ -21,5 +20,4 @@ public class CryptoCommons {
         BigInteger hash = new BigInteger(hex, 16);
         return hash;
     }
-
 }

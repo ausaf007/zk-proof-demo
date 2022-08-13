@@ -6,6 +6,5 @@
 *.properties
 
 ### IntelliJ Specific ###
-
 *.idea
 *.iml
